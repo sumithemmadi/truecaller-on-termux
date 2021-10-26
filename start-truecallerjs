@@ -2,7 +2,7 @@
 
 while true ;
 do
-        packageName=`cat test/test.json | jq -r .[0].packageName`
+        packageName=`termux-notification-list | jq -r .[0].packageName`
         if [[ $packageName == "com.android.incallui" ]]
         then
           phoneNumber=`cat test/test.json | jq -r .[0].title`
@@ -11,7 +11,7 @@ do
           termux-notification -t TruecallerJS -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber" --button2 Busy --button2-action "termux-sms-send -n $phoneNumber \"I will call you later\""
           until [[ $packageName != "com.android.incallui" ]]
           do
-              echo "Waiting..."
+              echo "You are on call..."
               sleep 5
           done
         fi
