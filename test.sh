@@ -2,17 +2,22 @@
 
 while true ;
 do
-        packageName=`cat test/test.json | jq -r .[0].packageName`
-        if [[ $packageName == "com.android.incallui" ]]
-        then
-          phoneNumber=`cat test/test.json | jq -r .[0].title`
-          name=`truecallerjs -s $phoneNumber | jq -r .data[0].name`
-          data=`echo -e " Name      :  $name\nNumber  : $phoneNumber\nCountry   : 'IN'"`
-          termux-notification -t TruecallerJS -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber" --button2 Busy --button2-action "termux-sms-send -n $phoneNumber \"I will call you later\""
-          until [[ $packageName != "com.android.incallui" ]]
-          do
-              echo "Waiting..."
-              sleep 5
-          done
-        fi
+        jsonData=`termux-notification-list`
+        jsonLength=`echo  $jsonData | jq length`
+        for ((i=0;i<=jsonLength-1;i++)); do
+              packageName=`echo  $jsonData | jq -r .[$i].packageName`
+              if [[ $packageName == "com.android.incallui" ]]
+              then
+                    phoneNumber=`echo $jsonData | jq -r .[$i].title`
+                    name=`truecallerjs -s $phoneNumber | jq -r .data[0].name`
+                    data=`echo -e " Name      :  $name\nNumber  : $phoneNumber\nCountry   : 'IN'"`
+                    termux-notification -t TruecallerJS -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber"
+                    until [[ $packageName != "com.android.incallui" ]]
+                    do
+                          echo "You are on call..."
+                          sleep 5
+                    done
+              fi
+
+        done
 done
