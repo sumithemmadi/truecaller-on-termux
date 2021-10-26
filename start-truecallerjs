@@ -11,7 +11,6 @@ checkNotification(){
                return false
         fi
     done
-    return true
 }
 
 while true ;
