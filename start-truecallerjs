@@ -11,7 +11,7 @@ do
               then
                     phoneNumber=`echo $jsonData | jq -r .[$i].title`
                     truecallerData=`truecallerjs -s $phoneNumber`
-                    if [ $(echo -e $json_string | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
+                    if [ $(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
                     then
                          name=`echo -e $truecallerData  | jq -r .data[0].name`
                          data=`echo -e " Name      :  $name\nNumber  : $phoneNumber"`
