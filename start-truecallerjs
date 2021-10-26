@@ -11,8 +11,8 @@ checkNotification(){
         then
                status_code=0
         fi
-        echo $status_code
     done
+    echo $status_code
 }
 
 while true ;
