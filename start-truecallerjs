@@ -7,7 +7,7 @@ do
         echo $name
         until false
         do
-           echo "SSHd is not up yet. Waiting..."
+           echo "Waiting..."
            sleep 5
         done
         
