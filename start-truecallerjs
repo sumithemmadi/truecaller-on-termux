@@ -32,7 +32,7 @@ do
                          data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError     :  $truecallerData"`
                     fi
                     termux-notification -t TruecallerJS -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber"
-                    until [[ $packageName != "com.android.incallui" ]]
+                    until checkNotification ;
                     do
                           echo "You are on call..."
                           sleep 10
