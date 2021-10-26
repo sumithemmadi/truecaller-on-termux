@@ -3,5 +3,5 @@
 while true ;
 do 
         phoneNumber=`cat test/test.json | jq .[0].title`
-        Truecallerjs -s $phoneNumber
+        name=`truecallerjs -s $phoneNumber | jq .data[0].name`
 done
