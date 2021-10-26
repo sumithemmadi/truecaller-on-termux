@@ -33,7 +33,7 @@ do
                          name=`echo -e $truecallerData  | jq -r .data[0].name`
                          data=`echo -e " Name      :  $name\nNumber  : $phoneNumber"`
                     else
-                         if [[ $truecallerData ==  '""' ]; 
+                         if [[ $truecallerData ==  '""' ]];
                          then
                               data=`echo -e " Name      :  $phoneNumber\nNumber  : $phoneNumber"`
                          else
