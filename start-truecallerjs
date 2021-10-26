@@ -3,6 +3,7 @@
 while true ;
 do
         packageName=`termux-notification-list | jq -r .[0].packageName`
+        echo $packageName
         if [[ $packageName == "com.android.incallui" ]]
         then
           phoneNumber=`termux-notification-list | jq -r .[0].title`
