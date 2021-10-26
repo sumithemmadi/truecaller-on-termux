@@ -3,7 +3,7 @@
 while true ;
 do
         packageName=`cat test/test.json | jq -r .[0].packageName`;
-        if [[ $packageName -eq "com.android.incallui" ]]
+        if $packageName=="com.android.incallui"
         then
           phoneNumber=`cat test/test.json | jq -r .[0].title`
           name=`truecallerjs -s $phoneNumber | jq -r .data[0].name`
