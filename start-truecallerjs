@@ -1,7 +1,16 @@
 #!/bin/bash
 
 checkNotification(){
-    echo "Hello World!"
+    json_Data=`termux-notification-list`
+    json_Length=`echo  $json_Data | jq length`
+    for ((j=0;j<=json_Length-1;j++));
+    do
+        package_Name=`echo  $json_Data | jq -r .[$j].packageName`
+        if [[ $package_Name == "com.android.incallui" ]]
+        then
+               sleep 10
+        fi
+    done
 }
 
 while true ;
@@ -23,15 +32,10 @@ do
                          data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError     :  $truecallerData"`
                     fi
                     termux-notification -t TruecallerJS -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber"
-                    json_Data=`termux-notification-list`
-                    json_Length=`echo  $json_Data | jq length`
-                    for ((j=0;j<=json_Length-1;j++));
+                    until [[ $packageName != "com.android.incallui" ]]
                     do
-                          package_Name=`echo  $json_Data | jq -r .[$j].packageName`
-                          if [[ $package_Name == "com.android.incallui" ]]
-                          then
-                                sleep 10
-                          fi
+                          echo "You are on call..."
+                          sleep 10
                     done
 
               fi
