@@ -14,10 +14,10 @@ do
                     if [ $(echo -e $json_string | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
                     then
                          name=`echo -e $truecallerData  | jq -r .data[0].name`
+                         data=`echo -e " Name      :  $name\nNumber  : $phoneNumber"`
                     else
-                         name="UNKNOWN NAME"
+                         data=`echo -e " Name      :  $name\nNumber  : $phoneNumber\nError     :  $truecallerData`
                     fi
-                    data=`echo -e " Name      :  $name\nNumber  : $phoneNumber\nCountry   : 'IN'"`
                     termux-notification -t TruecallerJS -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber"
                     until [[ $packageName != "com.android.incallui" ]]
                     do
