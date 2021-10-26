@@ -21,14 +21,10 @@ do
                     termux-notification -t TruecallerJS -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber"
                     jsonData2=`termux-notification-list`
                     jsonLength2=`echo  $jsonData2 | jq length`
-                    for ((j=0;j<=jsonLength2-1;j++));
+                    for ((i=0;i<=jsonLength-1;i++));
                     do
-                          packageName=`echo  $jsonData | jq -r .[$j].packageName`
-                          if [[ $packageName == "com.android.incallui" ]]
-                          then
-                                sleep 10
-                          fi
-                    done
+                          packageName=`echo  $jsonData | jq -r .[$i].packageName`
+                          if [[ $packageName == "com.android.incallui" ]]then
 
               fi
 
