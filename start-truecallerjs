@@ -2,13 +2,13 @@
 
 while true ;
 do
-        packageName=`cat test/test.json | jq -r .[0].packageName`;
+        packageName=`cat test/test.json | jq -r .[0].packageName`
         if [[ $packageName == "com.android.incallui" ]]
         then
           phoneNumber=`cat test/test.json | jq -r .[0].title`
           name=`truecallerjs -s $phoneNumber | jq -r .data[0].name`
           echo $name
-          until [[ $packageName == "com.android.incallui" ]]
+          until [[ $packageName != "com.android.incallui" ]]
           do
               echo "Waiting..."
               sleep 5
