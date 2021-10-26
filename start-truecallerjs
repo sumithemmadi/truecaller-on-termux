@@ -9,8 +9,6 @@ checkNotification(){
         if [[ $package_Name == "com.android.incallui" ]]
         then
                return false
-        else
-               return true
         fi
     done
 }
