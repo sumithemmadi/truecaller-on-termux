@@ -5,4 +5,10 @@ do
         phoneNumber=`cat test/test.json | jq -r .[0].title`
         name=`truecallerjs -s $phoneNumber | jq -r .data[0].name`
         echo $name
+        until false
+        do
+           echo "SSHd is not up yet. Waiting..."
+           sleep 5
+        done
+        
 done
