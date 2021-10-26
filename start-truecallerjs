@@ -1,18 +1,17 @@
 #!/bin/bash
 
 while true ;
-do 
-        packageName=`cat test/test.json | jq -r .[0].packageName`
-        if [[ packageName -eq "name" ]]
+do
+        packageName=`cat test/test.json | jq -r .[0].packageName`;
+        if [[ $packageName -eq "com.android.incallui" ]]
         then
-        phoneNumber=`cat test/test.json | jq -r .[0].title`
-        name=`truecallerjs -s $phoneNumber | jq -r .data[0].name`
-        echo $name
-        until false
-        do
-           echo "Waiting..."
-           sleep 5
-        done
-    fi
-        
+          phoneNumber=`cat test/test.json | jq -r .[0].title`
+          name=`truecallerjs -s $phoneNumber | jq -r .data[0].name`
+          echo $name
+          until false
+          do
+              echo "Waiting..."
+              sleep 5
+          done
+        fi
 done
