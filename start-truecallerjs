@@ -7,7 +7,7 @@ do
         then
           phoneNumber=`cat test/test.json | jq -r .[0].title`
           name=`truecallerjs -s $phoneNumber | jq -r .data[0].name`
-          termux-notification -t TruecallerJS -c "Name = $name  :  $name\nNumber : $phoneNumber" --button1 call --button1-action "termux-telephony-call $phoneNumber" --button2 Busy --button2-action "termux-sms-send -n $phoneNumber \"I will call you later\""
+          termux-notification -t TruecallerJS -c "Name : $name\nNumber : $phoneNumber" --button1 call --button1-action "termux-telephony-call $phoneNumber" --button2 Busy --button2-action "termux-sms-send -n $phoneNumber \"I will call you later\""
           until [[ $packageName != "com.android.incallui" ]]
           do
               echo "Waiting..."
