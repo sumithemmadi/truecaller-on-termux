@@ -10,7 +10,6 @@ do
           read -r -d '' $data <<- EOM
                Name    : $name
                Number  : $packageName
-               Country : 'IN'
           EOM
           termux-notification -t TruecallerJS -c $data --button1 call --button1-action "termux-telephony-call $phoneNumber" --button2 Busy --button2-action "termux-sms-send -n $phoneNumber \"I will call you later\""
           until [[ $packageName != "com.android.incallui" ]]
