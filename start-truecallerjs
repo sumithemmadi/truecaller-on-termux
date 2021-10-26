@@ -11,7 +11,7 @@ checkNotification(){
         then
                status_code=0
         fi
-        return $status_code
+        echo $status_code
     done
 }
 
@@ -36,7 +36,8 @@ do
                          data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError     :  $truecallerData"`
                     fi
                     termux-notification -t TruecallerJS -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber"
-                    until checkNotification ;
+                    checkNotification
+                    until [[ $status_code == 1 ]];
                     do
                           echo "You are on call..."
                           sleep 10
