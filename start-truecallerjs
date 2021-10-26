@@ -11,9 +11,9 @@ do
               then
                     phoneNumber=`echo $jsonData | jq -r .[$i].title`
                     truecallerData=`truecallerjs -s $phoneNumber`
-                    if [ $(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
+                    if [ $(echo -e '$truecallerData' | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
                     then
-                         name=`echo -e '$truecallerData'  | jq -r .data[0].name`
+                         name=`echo -e $truecallerData  | jq -r .data[0].name`
                          data=`echo -e " Name      :  $name\nNumber  : $phoneNumber"`
                     else
                          data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError     :  $truecallerData`
@@ -25,5 +25,6 @@ do
                           sleep 10
                     done
               fi
+
         done
 done
