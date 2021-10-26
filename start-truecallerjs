@@ -35,7 +35,7 @@ do
                     else
                          if [[ $truecallerData ==  "\"\"" ]; 
                          then
-                              data=`echo -e " Name      :  $phoneNumber\nNumber  : $phoneNumber\nError     :  $truecallerData"`
+                              data=`echo -e " Name      :  $phoneNumber\nNumber  : $phoneNumber"`
                          else
                               data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError     :  $truecallerData"`
                          fi
