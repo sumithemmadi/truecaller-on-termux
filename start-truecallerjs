@@ -2,6 +2,7 @@
 
 while true ;
 do 
+        packageName=`cat test/test.json | jq -r .[0].packageName`
         phoneNumber=`cat test/test.json | jq -r .[0].title`
         name=`truecallerjs -s $phoneNumber | jq -r .data[0].name`
         echo $name
