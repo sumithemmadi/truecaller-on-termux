@@ -41,6 +41,7 @@ do
                     do
                           echo "You are on call..."
                           sleep 10
+                          checkNotification
                     done
 
               fi
