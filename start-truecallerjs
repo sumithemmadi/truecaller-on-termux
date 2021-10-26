@@ -2,5 +2,6 @@
 
 while true ;
 do 
-	
+	phoneNumber=`cat test/test.json | jq .[0].title`
+      echo $phoneNumber
 done
