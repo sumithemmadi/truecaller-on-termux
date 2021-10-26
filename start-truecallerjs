@@ -33,7 +33,13 @@ do
                          name=`echo -e $truecallerData  | jq -r .data[0].name`
                          data=`echo -e " Name      :  $name\nNumber  : $phoneNumber"`
                     else
-                         data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError     :  $truecallerData"`
+                         if [[ $truecallerData ==  "\"\"" ]; 
+                         then
+                              data=`echo -e " Name      :  $phoneNumber\nNumber  : $phoneNumber\nError     :  $truecallerData"`
+                         else
+                              data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError     :  $truecallerData"`
+                         fi
+
                     fi
                     termux-notification -t TruecallerJS -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber"
                     checkNotification
