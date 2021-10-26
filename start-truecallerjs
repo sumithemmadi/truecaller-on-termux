@@ -25,6 +25,5 @@ do
                           sleep 10
                     done
               fi
-
         done
 done
