@@ -41,6 +41,7 @@ do
                     content=`echo $jsonData | jq -r .[$i].content`
                     name="UNKNOWN NAME"
                     notificationId=$RANDOM
+                    callNum=$phoneNumber
 
                     truecallerData=`truecallerjs -s $phoneNumber`
                     echo $truecallerData
@@ -57,7 +58,7 @@ do
                     else
                          data="$content"
                     fi
-                    termux-notification --id "$notificationId" -t "$name" -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
+                    termux-notification --id "$notificationId" -t "$name" -c "$data" --button1 call --button1-action "termux-telephony-call $callNum" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
                     checkNotification
                     until [[ $status_code == 1 ]];
                     do
