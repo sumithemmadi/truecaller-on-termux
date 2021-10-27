@@ -14,7 +14,7 @@ checkNotification(){
     done
     echo $status_code
 }
-
+echo -e "\033[1;32mStarting Truecallerjs....\033[0m"
 while true ;
 do
         jsonData=`termux-notification-list`
@@ -58,7 +58,7 @@ do
                     checkNotification
                     until [[ $status_code == 1 ]];
                     do
-                          echo "You are on call..."
+                          echo -e "\033[1;34mYou are on call...\033[0m"
                           sleep 10
                           checkNotification
                     done
@@ -66,3 +66,4 @@ do
               fi
         done
 done
+echo -e "\033[1;32mTruecallerjs Stopped \033[0m"
