@@ -13,6 +13,10 @@ checkNotification(){
         fi
     done
     echo $status_code
+    if [[ $status_code != 0 ]]
+    then
+         echo -e "\033[1;34mChecking for another call...\033[0m"
+    fi
 }
 echo -e "\033[1;32mStarting Truecallerjs....\033[0m"
 echo -e "\033[1;32mStarted Truecallerjs at \033[4;33m$(date)\033[0m"
