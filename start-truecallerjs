@@ -33,9 +33,13 @@ do
                          if [ -z  "`echo -e $truecallerData  | jq -r .data[0].name`" ]
                          then
                                data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber"`
-                         else
+                         elfi [ -z  "`echo -e $truecallerData  | jq -r .status`" ]
+                         then
                                name=`echo -e $truecallerData  | jq -r .data[0].name`
                                data=`echo -e " Name      :  $name\nNumber  : $phoneNumber"`
+                         else
+                               error=`echo -e $truecallerData  | jq -r .message`
+                               data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError     :  $error"`
                          fi
                     else
                          if [[ $truecallerData ==  '""' ]];
