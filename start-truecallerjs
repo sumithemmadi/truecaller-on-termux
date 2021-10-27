@@ -20,6 +20,12 @@ checkNotification(){
 }
 
 getNumber(){
+    contactsData=`termux-contact-list`
+    contactsJsonLength=`echo  $contactsData | jq length`
+    for ((k=0;k<=contactsJsonLength-1;k++));
+    do
+         
+    done
 }
 
 echo -e "\033[1;32mStarting Truecallerjs....\033[0m"
