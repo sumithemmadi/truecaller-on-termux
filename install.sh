@@ -1,6 +1,6 @@
 #!/bin/bash
 set +o histexpand
-pkg in nodejs wget jq termux-api termux-services
+pkg in nodejs jq termux-api termux-services
 
 npm install -g truecallerjs
 
