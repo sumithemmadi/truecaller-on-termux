@@ -49,7 +49,7 @@ do
                     elif [ $(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
                     then
                          getName=$(echo -e $truecallerData  | jq -r .data[].name)
-                         if [[ $getName == "null" ]]
+                         if [[ $getName != "null" ]]
                          then 
                               name=$getName
                               data="$content"
