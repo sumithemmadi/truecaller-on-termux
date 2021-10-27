@@ -37,30 +37,24 @@ do
 
                     echo $truecallerData
                     echo "$(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?)"
-
+                    name="UNKNOWN NAME"
                     if [[ $truecallerData ==  '""' ]];
                     then
-                         data=`echo -e " Name      :  $phoneNumber\nNumber  : $content"`
+                         data=`echo -e "$content"`
                     elif [ $(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
                     then
                          if [ -z  "`echo -e $truecallerData  | jq -r .data[0].name`" ]
                          then
-                               if [ -z  "`echo -e $truecallerData  | jq -r .status`" ]
-                               then
-                                    data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber"`
-                               else
-                                    error=`echo -e $truecallerData  | jq -r .message`
-                                    data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError   :  $error"`
-                               fi
+                                    data=`echo -e "$content"`
                          else
                                name=`echo -e $truecallerData  | jq -r .data[0].name`
                                data=`echo -e " Name      :  $name\nNumber  : $phoneNumber"`
 
                          fi
                     else
-                         data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError     :  $truecallerData"`
+                         data=`echo -e "$content"`
                     fi
-                    termux-notification -t $name -c "$content" --button1 call --button1-action "termux-telephony-call $phoneNumber"
+                    termux-notification -t $name -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber"
                     checkNotification
                     until [[ $status_code == 1 ]];
                     do
