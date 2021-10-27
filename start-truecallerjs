@@ -55,14 +55,7 @@ do
 
                          fi
                     else
-                         if [[ $truecallerData ==  '""' ]];
-                         then
-                              content=`echo $jsonData | jq -r .[$i].content`
-                              data=`echo -e " Name      :  $phoneNumber\nNumber  : $content"`
-                         else
-                              data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError     :  $truecallerData"`
-                         fi
-
+                         data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError     :  $truecallerData"`
                     fi
                     termux-notification -t TruecallerJS -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber"
                     checkNotification
