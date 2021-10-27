@@ -28,6 +28,7 @@ getNumber(){
          searchName=`echo  $contactsData | jq -r .[$i].name`
          if [[ $searchName == $1 ]]
          then
+              echo "found"
               number=`echo  $contactsData | jq -r .[$i].number`
               status=0
          fi
@@ -62,8 +63,8 @@ do
                           phoneNumber=$number
                     else
                           truecallerData=`truecallerjs -s $phoneNumber`
-                          # echo $truecallerData
-                          # echo "$(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?)"
+                          echo $truecallerData
+                          echo "$(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?)"
 
                           if [[ $truecallerData ==  '""' ]];
                           then
