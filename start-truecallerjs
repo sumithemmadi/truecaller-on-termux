@@ -53,7 +53,7 @@ do
                     else
                          data="$content"
                     fi
-                    termux-notification -t $name -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber"
+                    termux-notification -t "$name" -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber"
                     checkNotification
                     until [[ $status_code == 1 ]];
                     do
