@@ -58,7 +58,7 @@ do
                     getNumber "$phoneNumber"
                     if [[ $status == 0 ]]
                     then
-                          name=$searchName
+                          name=$phoneNumber
                           phoneNumber=$number
                     else
                           truecallerData=`truecallerjs -s $phoneNumber`
