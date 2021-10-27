@@ -55,22 +55,29 @@ do
                     notificationId=$RANDOM
                     callNum=$phoneNumber
 
-                    truecallerData=`truecallerjs -s $phoneNumber`
-                    echo $truecallerData
-                    echo "$(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?)"
-
-                    if [[ $truecallerData ==  '""' ]];
+                    getNumber "$phoneNumber"
+                    if [[ $status == 0 ]]
                     then
-                         name=$phoneNumber
-                         data="$content"
-                    elif [ $(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
-                    then
-                         name=`echo -e $truecallerData  | jq -r .data[0].name`
-                         data="$content"
+                          name=$searchName
+                          phoneNumber=$number
                     else
-                         data="$content"
+                          truecallerData=`truecallerjs -s $phoneNumber`
+                          # echo $truecallerData
+                          # echo "$(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?)"
+
+                          if [[ $truecallerData ==  '""' ]];
+                          then
+                               name=$phoneNumber
+                               data="$content"
+                          elif [ $(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
+                          then
+                               name=`echo -e $truecallerData  | jq -r .data[0].name`
+                               data="$content"
+                          else
+                               data="$content"
+                          fi
                     fi
-                    termux-notification --id "$notificationId" -t "$name" -c "$data" --button1 call --button1-action "termux-telephony-call $callNum" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
+                    termux-notification --id "$notificationId" -t "$name" -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
                     checkNotification
                     until [[ $status_code == 1 ]];
                     do
