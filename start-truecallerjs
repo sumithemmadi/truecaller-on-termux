@@ -24,20 +24,23 @@ while true ;
 do
         jsonData=`termux-notification-list`
         jsonLength=`echo  $jsonData | jq length`
+
+
         for ((i=0;i<=jsonLength-1;i++));
         do
               packageName=`echo  $jsonData | jq -r .[$i].packageName`
               if [[ $packageName == "com.android.incallui" ]]
               then
                     phoneNumber=`echo $jsonData | jq -r .[$i].title`
+                    content=`echo $jsonData | jq -r .[$i].content`
                     truecallerData=`truecallerjs -s $phoneNumber`
+
                     echo $truecallerData
                     echo "$(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?)"
+
                     if [[ $truecallerData ==  '""' ]];
                     then
-                         content=`echo $jsonData | jq -r .[$i].content`
                          data=`echo -e " Name      :  $phoneNumber\nNumber  : $content"`
-             
                     elif [ $(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
                     then
                          if [ -z  "`echo -e $truecallerData  | jq -r .data[0].name`" ]
@@ -57,7 +60,7 @@ do
                     else
                          data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError     :  $truecallerData"`
                     fi
-                    termux-notification -t TruecallerJS -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber"
+                    termux-notification -t $name -c "$content" --button1 call --button1-action "termux-telephony-call $phoneNumber"
                     checkNotification
                     until [[ $status_code == 1 ]];
                     do
