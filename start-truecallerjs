@@ -22,9 +22,15 @@ checkNotification(){
 getNumber(){
     contactsData=`termux-contact-list`
     contactsJsonLength=`echo  $contactsData | jq length`
+    status=1
     for ((k=0;k<=contactsJsonLength-1;k++));
     do
-         
+         searchName=`echo  $contactsData | jq -r .[$i].name`
+         if [[ $searchName == $1 ]]
+         then
+              number=`echo  $contactsData | jq -r .[$i].number`
+              status=0
+         fi
     done
 }
 
