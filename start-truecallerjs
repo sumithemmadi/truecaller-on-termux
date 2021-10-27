@@ -19,21 +19,6 @@ checkNotification(){
     fi
 }
 
-getNumber(){
-    contactsData=`termux-contact-list`
-    contactsJsonLength=`echo  $contactsData | jq length`
-    status=1
-    for ((k=0;k<=contactsJsonLength-1;k++));
-    do
-         searchName=`echo  $contactsData | jq -r .[$i].name`
-         if [[ $searchName == $1 ]]
-         then
-              echo "found"
-              number=`echo  $contactsData | jq -r .[$i].number`
-              status=0
-         fi
-    done
-}
 
 echo -e "\033[1;32mStarting Truecallerjs....\033[0m"
 echo -e "\033[1;32mStarted Truecallerjs at \033[4;33m$(date)\033[0m"
@@ -54,29 +39,21 @@ do
                     content=`echo $jsonData | jq -r .[$i].content`
                     name="UNKNOWN NAME"
                     notificationId=$RANDOM
-                    callNum=$phoneNumber
 
-                    getNumber "$phoneNumber"
-                    if [[ $status == 0 ]]
+                    truecallerData=`truecallerjs -s $phoneNumber`
+                    echo $truecallerData
+                    echo "$(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?)"
+
+                    if [[ $truecallerData ==  '""' ]];
                     then
-                          name=$phoneNumber
-                          phoneNumber=$number
+                         name=$phoneNumber
+                         data="$content"
+                    elif [ $(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
+                    then
+                         name=`echo -e $truecallerData  | jq -r .data[0].name`
+                         data="$content"
                     else
-                          truecallerData=`truecallerjs -s $phoneNumber`
-                          echo $truecallerData
-                          echo "$(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?)"
-
-                          if [[ $truecallerData ==  '""' ]];
-                          then
-                               name=$phoneNumber
-                               data="$content"
-                          elif [ $(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
-                          then
-                               name=`echo -e $truecallerData  | jq -r .data[0].name`
-                               data="$content"
-                          else
-                               data="$content"
-                          fi
+                         data="$content"
                     fi
                     termux-notification --id "$notificationId" -t "$name" -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
                     checkNotification
