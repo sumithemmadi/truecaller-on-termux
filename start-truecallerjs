@@ -30,8 +30,13 @@ do
                     echo "$(echo -e '$truecallerData' | jq empty > /dev/null 2>&1; echo $?)"
                     if [ $(echo -e '$truecallerData' | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
                     then
-                         name=`echo -e $truecallerData  | jq -r .data[0].name`
-                         data=`echo -e " Name      :  $name\nNumber  : $phoneNumber"`
+                         if [ -z  \"`echo -e $truecallerData  | jq -r .data[0].name`\" ]
+                         then
+                               data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber"`
+                         else
+                               name=`echo -e $truecallerData  | jq -r .data[0].name`
+                               data=`echo -e " Name      :  $name\nNumber  : $phoneNumber"`
+                         fi
                     else
                          if [[ $truecallerData ==  '""' ]];
                          then
