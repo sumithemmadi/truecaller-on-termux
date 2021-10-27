@@ -37,15 +37,14 @@ do
               then
                     phoneNumber=`echo $jsonData | jq -r .[$i].title`
                     content=`echo $jsonData | jq -r .[$i].content`
+                    name="UNKNOWN NAME"
                     truecallerData=`truecallerjs -s $phoneNumber`
-
                     echo $truecallerData
                     echo "$(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?)"
-                    name="UNKNOWN NAME"
 
                     if [[ $truecallerData ==  '""' ]];
                     then
-                         name=phoneNumber
+                         name=$phoneNumber
                          data="$content"
                     elif [ $(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
                     then
