@@ -19,6 +19,8 @@ checkNotification(){
     fi
 }
 
+getNumber(){
+}
 
 echo -e "\033[1;32mStarting Truecallerjs....\033[0m"
 echo -e "\033[1;32mStarted Truecallerjs at \033[4;33m$(date)\033[0m"
