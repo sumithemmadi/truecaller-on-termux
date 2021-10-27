@@ -12,7 +12,7 @@ checkNotification(){
                status_code=0
         fi
     done
-    echo $status_code
+    # echo $status_code
     if [[ $status_code != 0 ]]
     then
          echo -e "\033[1;34mWaiting for another call...\033[0m"
@@ -39,8 +39,8 @@ do
                     notificationId=$RANDOM
 
                     truecallerData=`truecallerjs -s $phoneNumber`
-                    echo $truecallerData
-                    echo "$(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?)"
+                    # echo $truecallerData
+                    # echo "$(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?)"
 
                     if [[ $truecallerData ==  '""' ]];
                     then
