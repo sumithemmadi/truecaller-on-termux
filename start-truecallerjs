@@ -66,4 +66,3 @@ do
               fi
         done
 done
-echo -e "\033[1;32mTruecallerjs Stopped \033[0m"
