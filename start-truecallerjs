@@ -47,7 +47,8 @@ do
                     else
                          if [[ $truecallerData ==  '""' ]];
                          then
-                              data=`echo -e " Name      :  $phoneNumber\nNumber  : $phoneNumber"`
+                              content=`echo $jsonData | jq -r .[$i].content`
+                              data=`echo -e " Name      :  $phoneNumber\nNumber  : $content"`
                          else
                               data=`echo -e " Name      :  Unknown Name\nNumber  : $phoneNumber\nError     :  $truecallerData"`
                          fi
