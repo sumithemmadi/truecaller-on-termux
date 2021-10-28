@@ -13,10 +13,6 @@ checkNotification(){
         fi
     done
     # echo $status_code
-    if [[ $status_code != 0 ]]
-    then
-         echo -e "\033[1;34mWaiting for another call...\033[0m"
-    fi
 }
 
 
@@ -46,13 +42,14 @@ do
                     # termux-toast  -b white -c black -g bottom "$phoneNumber - $title"
 
                     checkNotification
-                    startTime=$(date +%s)
+                    echo -e "\033[1;34mYou are on call with\033[0m \033[4;33m$phoneNumber\033[0m"
                     until [[ $status_code == 1 ]];
                     do
                           checkNotification
                     done
-                    endTime=$(date +%s)
-                    timeDiff=$(( $startTime - $endTime ))
+                    echo -e "\033[1;34mCall ended \033[0m [\033[4;33m$phoneNumber\033[0m]"
+                    echo -e "\033[1;34mWaiting for another call...\033[0m"
+
               fi
         done
 done
