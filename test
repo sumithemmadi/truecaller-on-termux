@@ -32,8 +32,12 @@ do
                     content=`echo $jsonData | jq -r .[$i].content`
                     notificationId=$RANDOM
 
-                    if [[ `echo $title | grep -x -E '[" ","+","(",")","-",0-9]+'; echo $?` == "1" ]]
+                    if [[ `echo $title | grep -x -E '[" ","+","(",")","-",0-9]+'; echo $?` == "0" ]]
                     then
+                         phoneNumber=$title
+                         title=$(termux-truecallerjs  \"$phoneNumber\")
+                         data="$content"
+                    else
                          phoneNumber=`echo $content | grep -o -E '[+,0-9]+'`
                          data="$content"
                     fi
