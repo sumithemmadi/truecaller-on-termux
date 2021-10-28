@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/node
+#!/data/data/com.termux/files/usr/bin/env node
 
 const truecallerjs = require('truecallerjs');
 
