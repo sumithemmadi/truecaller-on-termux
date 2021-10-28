@@ -36,7 +36,7 @@ do
                     if [[ `echo $title | grep -x -E '[" ","+","(",")","-",0-9]+'; echo $?` == "0" ]]
                     then
                          phoneNumber=$title
-                         title=$(termux-truecallerjs  \"$phoneNumber\")
+                         title=$(truecallerjs  -s \"$phoneNumber\" -r --name )
                          data="$content"
                     else
                          phoneNumber=`echo $content | grep -o -E '[+,0-9]+'`
