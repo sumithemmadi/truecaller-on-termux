@@ -1,5 +1,5 @@
 truecaller-on-termux:
 
-install : truecaller-on-termux
+install:
 
 uninstall:
