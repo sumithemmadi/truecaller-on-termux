@@ -1,6 +1,6 @@
 truecaller-on-termux:
 
-install:
+install: truecaller-on-termux
 	echo "hi"
 
 uninstall:
