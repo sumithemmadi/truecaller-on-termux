@@ -43,14 +43,15 @@ do
                     fi
 
                     termux-notification --id "$notificationId" -t "$title" -c "$data" --button1 call --button1-action "termux-telephony-call \"$phoneNumber\"" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
-                    termux-toast  -b white -c black -g bottom "$phoneNumber - $title"
+                    # termux-toast  -b white -c black -g bottom "$phoneNumber - $title"
 
                     checkNotification
+                    countNo=0
                     until [[ $status_code == 1 ]];
                     do
-                          echo -e "\033[1;34mYou are on call...\033[0m"
-                          sleep 5
+                          echo -e "\033[1;34mYou are on call...\[$countNo\]\033[0m"
                           checkNotification
+                          countNo=countNo+1
                     done
               fi
         done
