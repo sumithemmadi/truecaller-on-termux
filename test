@@ -36,7 +36,7 @@ do
                     content=`echo $jsonData | jq -r .[$i].content`
                     notificationId=$RANDOM
 
-                    if [[ 1 == 1 ]]
+                    if [[ `echo $title | grep -x -E '[" ","+","(",")","-",0-9]+'` == "null" ]]
                     then
                          phoneNumber=`echo $content | grep -o -E '[+,0-9]+'`
                          data="$content"
