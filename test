@@ -49,9 +49,9 @@ do
                     countNo=0
                     until [[ $status_code == 1 ]];
                     do
-                          echo -e "\033[1;34mYou are on call...\[$countNo\]\033[0m"
+                          echo -e "\033[1;34mYou are on call...[ $countNo ]\033[0m"
                           checkNotification
-                          countNo=countNo+1
+                          countNo=$countNo+1
                     done
               fi
         done
