@@ -30,11 +30,18 @@ do
         for ((i=0;i<=jsonLength-1;i++));
         do
               packageName=`echo  $jsonData | jq -r .[$i].packageName`
-
               if [[ $packageName == "com.android.incallui" ]]
               then
-                    
-                    termux-notification --id "$notificationId" -t "$name" -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
+                    title=`echo $jsonData | jq -r .[$i].title`
+                    content=`echo $jsonData | jq -r .[$i].content`
+                    notificationId=$RANDOM
+
+                    if [[ 1 == 1 ]]
+                    then
+                         phoneNumber=`echo $content | grep -o -E '[+,0-9]+'`
+                         data="$content"
+                    fi
+                    termux-notification --id "$notificationId" -t "$title" -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
                     checkNotification
                     until [[ $status_code == 1 ]];
                     do
