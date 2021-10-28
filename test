@@ -46,13 +46,13 @@ do
                     # termux-toast  -b white -c black -g bottom "$phoneNumber - $title"
 
                     checkNotification
-                    countNo=0
+                    startTime=$(date +%s)
                     until [[ $status_code == 1 ]];
                     do
-                          echo -e "\033[1;34mYou are on call...[ $countNo ]\033[0m"
                           checkNotification
-                          countNo=$(( $countNo + 1 ))
                     done
+                    endTime=$(date +%s)
+                    timeDiff=$(( $startTime - $endTime ))
               fi
         done
 done
