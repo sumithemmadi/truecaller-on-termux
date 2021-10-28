@@ -33,7 +33,7 @@ do
 
               if [[ $packageName == "com.android.incallui" ]]
               then
-
+                    
                     termux-notification --id "$notificationId" -t "$name" -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
                     checkNotification
                     until [[ $status_code == 1 ]];
