@@ -10,6 +10,7 @@ checkNotification(){
         if [[ $package_Name == "com.android.incallui" ]]
         then
                status_code=0
+               j=$json_Length
         fi
     done
     # echo $status_code
@@ -67,6 +68,7 @@ do
                           sleep 5
                           checkNotification
                     done
+                    i=$jsonLength
               fi
         done
 done
