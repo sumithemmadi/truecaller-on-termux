@@ -1,0 +1,47 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+checkNotification(){
+    json_Data=`termux-notification-list`
+    json_Length=`echo  $json_Data | jq length`
+    status_code=1
+    for ((j=0;j<=json_Length-1;j++));
+    do
+        package_Name=`echo  $json_Data | jq -r .[$j].packageName`
+        if [[ $package_Name == "com.android.incallui" ]]
+        then
+               status_code=0
+        fi
+    done
+    # echo $status_code
+    if [[ $status_code != 0 ]]
+    then
+         echo -e "\033[1;34mWaiting for another call...\033[0m"
+    fi
+}
+
+
+echo -e "\033[1;32mTruecallerjs started at\033[0m \033[4;33m$(date)\033[0m"
+
+while true ;
+do
+        jsonData=`termux-notification-list`
+        jsonLength=`echo  $jsonData | jq length`
+
+        for ((i=0;i<=jsonLength-1;i++));
+        do
+              packageName=`echo  $jsonData | jq -r .[$i].packageName`
+
+              if [[ $packageName == "com.android.incallui" ]]
+              then
+
+                    termux-notification --id "$notificationId" -t "$name" -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
+                    checkNotification
+                    until [[ $status_code == 1 ]];
+                    do
+                          echo -e "\033[1;34mYou are on call...\033[0m"
+                          sleep 5
+                          checkNotification
+                    done
+              fi
+        done
+done
