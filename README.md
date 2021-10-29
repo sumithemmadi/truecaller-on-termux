@@ -9,9 +9,15 @@ git clone https://github.com/sumithemmadi/truecaller-on-termux.git
 cd truecaller-on-termux
 ```
 
-Enter the below command 
+- Enter the below command 
 ```
 make install
+```
+- If you get any error just close termux app and reopen it.
+- Then start truecallerjs service.
+```
+sv up truecallerjs
+sv-enable truecallerjs
 ```
 
 Then login to your account
