@@ -1,8 +1,14 @@
 truecaller-on-termux:
+DIR=$(PREFIX)/lib
 
 install: truecaller-on-termux
-	pkg in nodejs jq termux-api termux-services
-	npm install -g truecallerjs
+	pkg i nodejs jq termux-api termux-services -y
+	@ if [ -d "$DIR" ]; then
+		echo "'$DIR' found , please wait ..."
+	else
+		echo "Warning: '$DIR' NOT found."
+		npm install -g truecallerjs
+	fi
 	install start-truecallerjs $(PREFIX)/bin/
 	mkdir -p $(PREFIX)/var/service/truecallerjs/log/
 	ln -sf $(PREFIX)/share/termux-services/svlogger $(PREFIX)/var/service/truecallerjs/log/run
