@@ -32,7 +32,7 @@ uninstall:
 	rm -Rf $(PREFIX)/var/service/truecallerjs
 
 fix:
-	export SVDIR="/data/data/com.termux/files/usr/var/service
+	@ export SVDIR="/data/data/com.termux/files/usr/var/service
 	sv-disable truecallerjs
 	sv down truecallerjs
 	find -L  $(PREFIX)/var/service/truecallerjs -type f \( -name "pid" -o -name "lock" \) -delete
