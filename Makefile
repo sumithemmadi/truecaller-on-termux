@@ -10,7 +10,12 @@ install: truecaller-on-termux
 		echo "Installing truecallerjs , please wait ..."; \
 		npm install -g truecallerjs ; \
 	fi
-	truecallerjs login
+	@ if [ -z "$DIR/.secret/authkey.json" ]; then \
+		echo "Already logged in to your account, please wait ..."; \
+	else \
+		echo "Please Login to your Truecaller account"; \
+		truecallerjs login ; \
+	fi
 	mkdir -p $(PREFIX)/var/service/truecallerjs/log/
 	ln -sf $(PREFIX)/share/termux-services/svlogger $(PREFIX)/var/service/truecallerjs/log/run
 	install -m 0777 run $(PREFIX)/var/service/truecallerjs/
@@ -25,19 +30,16 @@ uninstall:
 	rm -f $(PREFIX)/bin/truecallerjs
 	rm -Rf $(PREFIX)/lib/node_modules/truecallerjs
 	rm -Rf $(PREFIX)/var/service/truecallerjs
-	service-daemon stop
 
 fix:
-	export SVDIR="/data/data/com.termux/files/usr/var/service"
-	service-daemon start
-	service-daemon restart
+	export SVDIR="/data/data/com.termux/files/usr/var/service
 	sv-disable truecallerjs
 	sv down truecallerjs
 	find -L  $(PREFIX)/var/service/truecallerjs -type f \( -name "pid" -o -name "lock" \) -delete
 	# starts the service
 	sv up truecallerjs
 	# verify service status
-	sv s truecallerjs
 	sv-enable truecallerjs
+	sv s truecallerjs
 
 .PHONY: install uninstall fix
