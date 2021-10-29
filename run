@@ -1,2 +1,58 @@
 #!/data/data/com.termux/files/usr/bin/bash
-exec start-truecallerjs  2>&1
+
+checkNotification(){
+    json_Data=`termux-notification-list`
+    json_Length=`echo  $json_Data | jq length`
+    status_code=1
+    for ((j=0;j<=json_Length-1;j++));
+    do
+        package_Name=`echo  $json_Data | jq -r .[$j].packageName`
+        if [[ $package_Name == "com.android.incallui" ]]
+        then
+               status_code=0
+               j=$json_Length
+        fi
+    done
+    # echo $status_code
+}
+
+
+echo -e "\033[1;32mTruecallerjs started at\033[0m \033[4;33m$(date)\033[0m"
+
+while true ;
+do
+        jsonData=`termux-notification-list`
+        jsonLength=`echo  $jsonData | jq length`
+
+        for ((i=0;i<=jsonLength-1;i++));
+        do
+              packageName=`echo  $jsonData | jq -r .[$i].packageName`
+              if [[ $packageName == "com.android.incallui" ]]
+              then
+                    title=`echo $jsonData | jq -r .[$i].title`
+                    content=`echo $jsonData | jq -r .[$i].content`
+                    notificationId=$RANDOM
+
+                    if [[ `echo $title | grep -x -E '[" ","+","(",")","-",0-9]+'; echo $?` == "1" ]]
+                    then
+                         phoneNumber=`echo $content | grep -o -E '[+,0-9]+'`
+                         data="$content"
+                    else
+                         phoneNumber=$title
+                         title=$(truecallerjs  -s \"$phoneNumber\" -r --name )
+                         data="$content"
+                    fi
+
+                    termux-notification --id "$notificationId" -t "$title" -c "$data" --button1 call --button1-action "termux-telephony-call \"$phoneNumber\"" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
+                    termux-toast  -b white -c black -g bottom "$phoneNumber - $title"
+
+                    checkNotification
+
+                    until [[ $status_code == 1 ]];
+                    do
+                          checkNotification
+                    done
+                    i=$jsonLength
+              fi
+        done
+done
