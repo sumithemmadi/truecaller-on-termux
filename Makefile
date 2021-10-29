@@ -18,17 +18,14 @@ install: truecaller-on-termux
 	@ ln -sf $(PREFIX)/share/termux-services/svlogger $(PREFIX)/var/service/truecallerjs/log/run
 	install .bash_profile $(HOME)/
 	install -m 0777 run $(PREFIX)/var/service/truecallerjs/
-	reset
 	sv up truecallerjs
 	sv-enable truecallerjs
 
 uninstall:
-	sv-diable truecallerjs
-	sv-down truecallerjs
-	rm -f $(PREFIX)/bin/truecallerjs
-	rm -Rf $(PREFIX)/lib/node_modules/truecallerjs
-	rm -Rf $(PREFIX)/var/service/truecallerjs
-	rm -f $(HOME)/.bash_profile
-
+	@ rm -f $(PREFIX)/bin/truecallerjs
+	@ rm -Rf $(PREFIX)/lib/node_modules/truecallerjs
+	@ rm -Rf $(PREFIX)/var/service/truecallerjs
+	@ rm -f $(HOME)/.bash_profile
+	@ echo "Enter the below  command to stop service \n\n  sv-diable truecallerjs && sv-down truecallerjs"
 
 .PHONY: install uninstall
