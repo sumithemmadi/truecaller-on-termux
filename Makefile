@@ -1,8 +1,5 @@
 truecaller-on-termux:
 
-DIR := $(PREFIX)/lib/node_modules/truecallerjs
-SVDIR := $(PREFIX)/var/service
-
 install: truecaller-on-termux
 	pkg i nodejs jq termux-api termux-services -y
 	@ if [ -d "$(PREFIX)/lib/node_modules/truecallerjs" ]; then \
@@ -21,7 +18,8 @@ install: truecaller-on-termux
 	@ ln -sf $(PREFIX)/share/termux-services/svlogger $(PREFIX)/var/service/truecallerjs/log/run
 	install -m 0777 run $(PREFIX)/var/service/truecallerjs/
 	install -m 0777 start-truecallerjs $(PREFIX)/var/service/truecallerjs/
-	# $(eval SVDIR = `export SVDIR=$$PREFIX/var/service`)
+	install .bash_profile $(HOME)/
+	source $(HOME)/.bash_profile
 	sv up truecallerjs
 	sv-enable truecallerjs
 
