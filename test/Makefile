@@ -19,7 +19,6 @@ install: truecaller-on-termux
 	@ ln -sf $(PREFIX)/share/termux-services/svlogger $(PREFIX)/var/service/truecallerjs/log/run
 	install .bash_profile $(HOME)/
 	install -m 0777 run $(PREFIX)/var/service/truecallerjs/
-	reset
 	sv up truecallerjs
 	sv-enable truecallerjs
 
