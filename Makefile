@@ -26,6 +26,6 @@ uninstall:
 	@ rm -Rf $(PREFIX)/lib/node_modules/truecallerjs
 	@ rm -Rf $(PREFIX)/var/service/truecallerjs
 	@ rm -f $(HOME)/.bash_profile
-	@ echo "Enter the below  command to stop service \n\n  sv-diable truecallerjs && sv-down truecallerjs"
+	@ echo -e "Enter the below  command to stop service \n\n  sv-diable truecallerjs && sv-down truecallerjs"
 
 .PHONY: install uninstall
