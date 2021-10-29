@@ -14,10 +14,7 @@ Enter the below command
 make install
 ```
 
-Then login 
-```
-truecallerjs login
-```
+Then login to your account
 
 ### To uninstall 
 ```
