@@ -24,7 +24,6 @@ uninstall:
 	rm -f $(PREFIX)/bin/truecallerjs
 	rm -Rf $(PREFIX)/lib/node_modules/truecallerjs
 	rm -Rf $(PREFIX)/var/service/truecallerjs
-	rm -Rf $(HOME)/.bash_profile
 	service-daemon stop
 
 fix:
