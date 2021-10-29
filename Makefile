@@ -5,7 +5,7 @@ DIR=$(PREFIX)/lib/node_modules/truecallerjs
 install: truecaller-on-termux
 	pkg i nodejs jq termux-api termux-services -y
 	@ if [ -d "$DIR" ]; then \
-		echo "'$DIR' found , please wait ..."\
+		echo "'$DIR' found , please wait ..." \
 	else \
 		echo "Warning: '$DIR' NOT found." \
 		npm install -g truecallerjs \
