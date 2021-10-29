@@ -21,6 +21,7 @@ install: truecaller-on-termux
 	ln -sf $(PREFIX)/share/termux-services/svlogger $(PREFIX)/var/service/truecallerjs/log/run
 	install -m 0777 run $(PREFIX)/var/service/truecallerjs/
 	install -m 0777 start-truecallerjs $(PREFIX)/var/service/truecallerjs/
+	export SVDIR
 	sv up truecallerjs
 	sv-enable truecallerjs
 
@@ -32,11 +33,5 @@ uninstall:
 	rm -Rf $(PREFIX)/lib/node_modules/truecallerjs
 	rm -Rf $(PREFIX)/var/service/truecallerjs
 
-fix:
-	export SVDIR
-	find -L  $(PREFIX)/var/service/truecallerjs -type f \( -name "pid" -o -name "lock" \) -delete
-	sv up truecallerjs
-	sv-enable truecallerjs
-	sv s truecallerjs
 
-.PHONY: install uninstall fix
+.PHONY: install uninstall
