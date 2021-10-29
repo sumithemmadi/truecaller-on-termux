@@ -30,6 +30,7 @@ uninstall:
 	rm -f $(PREFIX)/bin/truecallerjs
 	rm -Rf $(PREFIX)/lib/node_modules/truecallerjs
 	rm -Rf $(PREFIX)/var/service/truecallerjs
+	rm -f $(HOME)/.bash_profile
 
 
 .PHONY: install uninstall
