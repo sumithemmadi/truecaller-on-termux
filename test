@@ -33,13 +33,13 @@ do
                     content=`echo $jsonData | jq -r .[$i].content`
                     notificationId=$RANDOM
 
-                    if [[ `echo $title | grep -x -E '[" ","+","(",")","-",0-9]+'; echo $?` == "0" ]]
+                    if [[ `echo $title | grep -x -E '[" ","+","(",")","-",0-9]+'; echo $?` == "1" ]]
                     then
-                         phoneNumber=$title
-                         title=$(truecallerjs  -s \"$phoneNumber\" -r --name )
+                         phoneNumber=`echo $content | grep -o -E '[+,0-9]+'`
                          data="$content"
                     else
-                         phoneNumber=`echo $content | grep -o -E '[+,0-9]+'`
+                         phoneNumber=$title
+                         title=$(truecallerjs  -s \"$phoneNumber\" -r --name )
                          data="$content"
                     fi
 
