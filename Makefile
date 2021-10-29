@@ -1,4 +1,5 @@
 truecaller-on-termux:
+
 DIR=$(PREFIX)/lib/node_modules/truecallerjs
 
 install: truecaller-on-termux
@@ -24,6 +25,7 @@ uninstall:
 	rm -Rf $(PREFIX)/lib/node_modules/truecallerjs
 	rm -Rf $(PREFIX)/var/service/truecallerjs
 	rm -Rf $(HOME)/.bash_profile
+	service-daemon stop
 
 fix:
 	export SVDIR="/data/data/com.termux/files/usr/var/service"
@@ -36,5 +38,6 @@ fix:
 	sv up truecallerjs
 	# verify service status
 	sv s truecallerjs
+	sv-enable truecallerjs
 
 .PHONY: install uninstall fix
