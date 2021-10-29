@@ -13,14 +13,13 @@ cd truecaller-on-termux
 ```
 make install
 ```
+- Then [login](https://github.com/sumithemmadi/truecaller-on-termux) to your Truecaller account.
 - If you get any error just close termux app and reopen it.
 - Then start truecallerjs service.
 ```
 sv up truecallerjs
 sv-enable truecallerjs
 ```
-
-Then login to your account
 
 ### To uninstall 
 ```
