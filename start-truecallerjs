@@ -14,10 +14,6 @@ checkNotification(){
         fi
     done
     # echo $status_code
-    if [[ $status_code != 0 ]]
-    then
-         echo -e "\033[1;34mWaiting for another call...\033[0m"
-    fi
 }
 
 
@@ -31,41 +27,29 @@ do
         for ((i=0;i<=jsonLength-1;i++));
         do
               packageName=`echo  $jsonData | jq -r .[$i].packageName`
-
               if [[ $packageName == "com.android.incallui" ]]
               then
-                    phoneNumber=`echo $jsonData | jq -r .[$i].title`
+                    title=`echo $jsonData | jq -r .[$i].title`
                     content=`echo $jsonData | jq -r .[$i].content`
-                    name="UNKNOWN NAME"
                     notificationId=$RANDOM
 
-                    truecallerData=`truecallerjs -s $phoneNumber`
-                    # echo $truecallerData
-                    # echo "$(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?)"
-
-                    if [[ $truecallerData ==  '""' ]];
+                    if [[ `echo $title | grep -x -E '[" ","+","(",")","-",0-9]+'; echo $?` == "1" ]]
                     then
-                         name=$phoneNumber
+                         phoneNumber=`echo $content | grep -o -E '[+,0-9]+'`
                          data="$content"
-                    elif [ $(echo -e $truecallerData | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; 
-                    then
-                         getName=$(echo -e $truecallerData  | jq -r .data[].name)
-                         if [[ $getName != "null" ]]
-                         then 
-                              name=$getName
-                              data="$content"
-                         else
-                              data="$content"
-                         fi
                     else
+                         phoneNumber=$title
+                         title=$(truecallerjs  -s \"$phoneNumber\" -r --name )
                          data="$content"
                     fi
-                    termux-notification --id "$notificationId" -t "$name" -c "$data" --button1 call --button1-action "termux-telephony-call $phoneNumber" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
+
+                    termux-notification --id "$notificationId" -t "$title" -c "$data" --button1 call --button1-action "termux-telephony-call \"$phoneNumber\"" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
+                    termux-toast  -b white -c black -g bottom "$phoneNumber - $title"
+
                     checkNotification
+
                     until [[ $status_code == 1 ]];
                     do
-                          echo -e "\033[1;34mYou are on call...\033[0m"
-                          sleep 5
                           checkNotification
                     done
                     i=$jsonLength
