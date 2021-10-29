@@ -19,7 +19,7 @@ install: truecaller-on-termux
 	install -m 0777 run $(PREFIX)/var/service/truecallerjs/
 	install -m 0777 start-truecallerjs $(PREFIX)/var/service/truecallerjs/
 	install .bash_profile $(HOME)/
-	source $(HOME)/.bash_profile
+	reset
 	sv up truecallerjs
 	sv-enable truecallerjs
 
