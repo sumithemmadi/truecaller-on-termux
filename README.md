@@ -14,11 +14,19 @@ Enter the below command
 make install
 ```
 
+Then login 
+```
+truecallerjs login
+```
+
 ### To uninstall 
 ```
 make uninstall
 ```
-Then login 
+
+Then stop service with below command
+
 ```
-truecallerjs login
+sv down truecallerjs
+sv-disable truecallerjs
 ```
