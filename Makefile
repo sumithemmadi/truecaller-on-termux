@@ -1,6 +1,6 @@
 truecaller-on-termux:
 
-DIR := $(PREFIX)/lib/node_modules/truecallerjs
+DIR = $(PREFIX)/lib/node_modules/truecallerjs
 
 install: truecaller-on-termux
 	pkg i nodejs jq termux-api termux-services -y
