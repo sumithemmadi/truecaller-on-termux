@@ -1,6 +1,7 @@
 truecaller-on-termux:
 
 DIR := $(PREFIX)/lib/node_modules/truecallerjs
+SVDIR := $(PREFIX)/var/service
 
 install: truecaller-on-termux
 	pkg i nodejs jq termux-api termux-services -y
@@ -32,7 +33,7 @@ uninstall:
 	rm -Rf $(PREFIX)/var/service/truecallerjs
 
 fix:
-	export SVDIR = "/data/data/com.termux/files/usr/var/service"
+	export SVDIR
 	find -L  $(PREFIX)/var/service/truecallerjs -type f \( -name "pid" -o -name "lock" \) -delete
 	sv up truecallerjs
 	sv-enable truecallerjs
