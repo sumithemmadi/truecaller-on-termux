@@ -5,23 +5,23 @@ SVDIR := $(PREFIX)/var/service
 
 install: truecaller-on-termux
 	pkg i nodejs jq termux-api termux-services -y
-	@ if [ -d "$DIR" ]; then \
+	@ if [ -d "$(PREFIX)/lib/node_modules/truecallerjs" ]; then \
 		echo "Truecallerjs already installed, please wait ..."; \
 	else \
 		echo "Installing truecallerjs , please wait ..."; \
 		npm install -g truecallerjs ; \
 	fi
-	@ if [ -z "$DIR/.secret/authkey.json" ]; then \
+	@ if [ -f "$(PREFIX)/lib/node_modules/truecallerjs/.secret/authkey.json" ]; then \
 		echo "Already logged in to your account, please wait ..."; \
 	else \
 		echo "Please Login to your Truecaller account"; \
 		truecallerjs login ; \
 	fi
-	mkdir -p $(PREFIX)/var/service/truecallerjs/log/
-	ln -sf $(PREFIX)/share/termux-services/svlogger $(PREFIX)/var/service/truecallerjs/log/run
+	@ mkdir -p $(PREFIX)/var/service/truecallerjs/log/
+	@ ln -sf $(PREFIX)/share/termux-services/svlogger $(PREFIX)/var/service/truecallerjs/log/run
 	install -m 0777 run $(PREFIX)/var/service/truecallerjs/
 	install -m 0777 start-truecallerjs $(PREFIX)/var/service/truecallerjs/
-	$(eval SVDIR = `export SVDIR=$$PREFIX/var/service`)
+	# $(eval SVDIR = `export SVDIR=$$PREFIX/var/service`)
 	sv up truecallerjs
 	sv-enable truecallerjs
 
