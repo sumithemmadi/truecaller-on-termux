@@ -9,6 +9,11 @@ git clone https://github.com/sumithemmadi/truecaller-on-termux.git
 cd truecaller-on-termux
 ```
 
+set **SVDIR** as a environment variable
+```bash
+export SVDIR := $PREFIX/var/service
+```
+
 Enter the below command 
 ```
 make install
