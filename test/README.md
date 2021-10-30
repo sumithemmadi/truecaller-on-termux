@@ -11,7 +11,7 @@ cd truecaller-on-termux
 
 - Set **SVDIR=/data/data/com.termux/files/usr/var/service** as a environment variable
 ```bash
-export SVDIR := $PREFIX/var/service
+export SVDIR=$PREFIX/var/service
 ```
 
 - Enter the below command 
