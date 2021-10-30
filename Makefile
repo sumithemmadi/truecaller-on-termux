@@ -1,4 +1,5 @@
 truecaller-on-termux:
+export SVDIR := $(PREFIX)/var/service
 
 install: truecaller-on-termux
 	pkg i nodejs jq termux-api termux-services -y
