@@ -18,12 +18,15 @@ export SVDIR := $PREFIX/var/service
 ```
 make install
 ```
+Then login to your account to know more [click here](https://github.com/sumithemmadi/truecallerjs#command-line-usage)
 
 ### To uninstall 
 ```
 make uninstall
 ```
-- Then login 
-```
-truecallerjs login
+
+Then stop the service
+```bash
+sv down truecallerjs
+sv-disable truecallerjs
 ```
