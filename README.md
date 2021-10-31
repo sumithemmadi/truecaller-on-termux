@@ -2,7 +2,6 @@
 Simple Truecaller on Termux
 
 [![Version](https://img.shields.io/badge/Version-1.0.3-blue)](https://github.com/sumithemmadi/truecaller-on-termux)
-[![Licence](https://img.shields.io/github/license/sumithemmadi/truecaller-on-termux)](https://github.com/sumithemmadi/truecaller-on-termux)
 [![issues](https://img.shields.io/github/issues/sumithemmadi/truecaller-on-termux)](https://github.com/sumithemmadi/truecaller-on-termux)
 [![stars](https://img.shields.io/github/stars/sumithemmadi/truecaller-on-termux)](https://github.com/sumithemmadi/truecaller-on-termux)
 
@@ -37,3 +36,20 @@ Then stop service with below command
 sv down truecallerjs
 sv-disable truecallerjs
 ```
+## LICENSE
+
+MIT License
+
+Copyright (c) 2021 **Emmadi Sumith Kumar**
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+
