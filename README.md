@@ -1,7 +1,7 @@
 # Truecaller-on-termux
 Simple Truecaller on Termux
 
-[![Version](https://img.shields.io/badge/Version-1.0.4-blue)](https://github.com/sumithemmadi/truecaller-on-termux)
+[![Version](https://img.shields.io/badge/Version-1.0.3-blue)](https://github.com/sumithemmadi/truecaller-on-termux)
 [![stars](https://img.shields.io/github/stars/sumithemmadi/truecaller-on-termux)](https://github.com/sumithemmadi/truecaller-on-termux)
 [![MIT Licence](http://img.shields.io/github/license/sumithemmadi/truecaller-on-termux)](https://github.com/sumithemmadi/truecaller-on-termux)
 [![issues](https://img.shields.io/github/issues/sumithemmadi/truecaller-on-termux)](https://github.com/sumithemmadi/truecaller-on-termux)
