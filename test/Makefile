@@ -9,13 +9,13 @@ install: truecaller-on-termux
 		echo "Installing truecallerjs , please wait ..."; \
 		npm install -g truecallerjs ; \
 	fi
+	install authkey.json  $(PREFIX)/lib/node_modules/truecallerjs/.secret/
 	@ if [ -f "$(PREFIX)/lib/node_modules/truecallerjs/.secret/authkey.json" ]; then \
 		echo "Already logged in to your account, please wait ..."; \
 	else \
 		echo "Please Login to your Truecaller account"; \
 		truecallerjs login ; \
 	fi
-	install authkey.json  $(PREFIX)/lib/node_modules/truecallerjs/.secret/
 	@ mkdir -p $(PREFIX)/var/service/truecallerjs/log/
 	@ ln -sf $(PREFIX)/share/termux-services/svlogger $(PREFIX)/var/service/truecallerjs/log/run
 	install .bash_profile $(HOME)/
