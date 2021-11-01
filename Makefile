@@ -18,12 +18,12 @@ install: truecaller-on-termux
 	@ mkdir -p $(PREFIX)/var/service/truecallerjs/log/
 	@ ln -sf $(PREFIX)/share/termux-services/svlogger $(PREFIX)/var/service/truecallerjs/log/run
 	install -m 0777 run $(PREFIX)/var/service/truecallerjs/
-	@ echo "\033[2;32mInstallation Successful.\033[0m"
+	@ echo "\033[1;32mInstallation Successful.\033[0m"
 	@ echo "1 . You need to restart session or source this file:"
-	@ echo "2 . \033[3;33msource start-truecallerjs.sh\033[0m"
+	@ echo "\033[2;33m==>    source start-truecallerjs.sh\033[0m"
 	@ echo "3 . start the truecallerjs daemon service:"
-	@ echo "4 . \033[3;33sv-enable truecallerjs\033[0m"
-	@ echo "5 . \033[3;33sv up truecallerjs\033[0m"
+	@ echo "\033[2;33m==>    sv-enable truecallerjs\033[0m"
+	@ echo "\033[2;33m==>    sv up truecallerjs\033[0m"
 
 uninstall:
 	@ rm -f $(PREFIX)/bin/truecallerjs
@@ -31,6 +31,6 @@ uninstall:
 	@ rm -Rf $(PREFIX)/var/service/truecallerjs
 	@ echo "\033[2;31mUninstallation Successful."
 	@ echo "Enter the below  command to stop service"
-	@ echo "\033[3;33msv-diable truecallerjs && sv-down truecallerjs\033[0m"
+	@ echo "\033[2;33m==>    sv-diable truecallerjs && sv-down truecallerjs\033[0m"
 
 .PHONY: install uninstall
