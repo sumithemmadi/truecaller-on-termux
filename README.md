@@ -10,9 +10,23 @@ A simple truecaller on termux
     <img src="https://user-images.githubusercontent.com/50250422/139717425-824b5468-29d4-4514-8b4a-77b119239501.jpg">
 </div>
 
+## Before we begin
+Before we begin you should do following things.
+1. Make sure that you install [termux-api](https://f-droid.org/packages/com.termux.api/)
+2. Now you should give notifications permission to termux-api.
+```bash
+termux-notification-list
+```
+3. After running above command in termux,click **Allow**.
+3. Then run `termux-notificatin-list` and see a json is showing or not.
+If it's not shown try enabling Auto Start for Termux:API and disable all battery optimizations.
+https://dontkillmyapp.com/xiaomi
+4. Make sure that you install `git` and `make`.
+
 ## Installation and Login
 
-First clone this repository 
+First clone this repository.
+
 ```bash
 git clone https://github.com/sumithemmadi/truecaller-on-termux.git
 cd truecaller-on-termux
