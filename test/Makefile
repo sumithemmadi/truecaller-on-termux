@@ -31,7 +31,7 @@ uninstall:
 	@ rm -Rf $(PREFIX)/lib/node_modules/truecallerjs
 	@ rm -Rf $(PREFIX)/var/service/truecallerjs
 	@ echo "==> \033[1;31mUninstallation Successful.\033[0m"
-	@ echo "==> Enter the below  command to stop service"
+	@ echo "==> 1 . Enter the below  command to stop service"
 	@ echo "==> \033[1;33m    sv-diable truecallerjs && sv-down truecallerjs\033[0m"
 
 .PHONY: install uninstall
