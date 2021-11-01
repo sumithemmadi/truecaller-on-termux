@@ -17,11 +17,11 @@ install: truecaller-on-termux
 	fi
 	@ mkdir -p $(PREFIX)/var/service/truecallerjs/log/
 	@ ln -sf $(PREFIX)/share/termux-services/svlogger $(PREFIX)/var/service/truecallerjs/log/run
-	install -m 0777 run $(PREFIX)/var/service/truecallerjs/
-	@ echo "\033[1;32mInstallation Successful.\033[0m"
+	@ install -m 0777 run $(PREFIX)/var/service/truecallerjs/
+	@ echo "==> \033[1;32mInstallation Successful.\033[0m"
 	@ echo "1 . You need to restart session or source this file:"
 	@ echo "\033[2;33m==>    source start-truecallerjs.sh\033[0m"
-	@ echo "3 . start the truecallerjs daemon service:"
+	@ echo "2 . start the truecallerjs daemon service:"
 	@ echo "\033[2;33m==>    sv-enable truecallerjs\033[0m"
 	@ echo "\033[2;33m==>    sv up truecallerjs\033[0m"
 
