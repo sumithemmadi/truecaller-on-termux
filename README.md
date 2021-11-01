@@ -5,15 +5,12 @@ Simple Truecaller on Termux
 [![stars](https://img.shields.io/github/stars/sumithemmadi/truecaller-on-termux)](https://github.com/sumithemmadi/truecaller-on-termux)
 [![MIT Licence](http://img.shields.io/github/license/sumithemmadi/truecaller-on-termux)](https://github.com/sumithemmadi/truecaller-on-termux)
 [![issues](https://img.shields.io/github/issues/sumithemmadi/truecaller-on-termux)](https://github.com/sumithemmadi/truecaller-on-termux)
-<!--
-<div class="row">
-  <div class="column">
-    <img src="https://www.w3schools.com/howto/img_snow.jpg"  width="42" height="42" style="float:left">
-    <img src="https://www.w3schools.com/howto/img_forest.jpg" width="42" height="42"  style="float:middle">
-    <img src="https://www.w3schools.com/howto/img_mountains.jpg" width="42" height="42"  style="float:right">
-  </div>
+
+<div class="imgs" style="center">
+    <img src="https://user-images.githubusercontent.com/50250422/139713998-1f63605d-54f2-4f68-8019-09b4c23e1808.jpg" width="165" height="350"  style="float:left">
+    <img src="https://user-images.githubusercontent.com/50250422/139714028-091fead0-5a2f-4385-90a7-37c4bdfa3126.jpg" width="165" height="350"  style="float:right">
 </div>
--->
+
 ## Installation and Login
 
 First clone this repository 
