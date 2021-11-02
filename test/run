@@ -65,7 +65,7 @@ do
                          data="$content"
                     fi
 
-                    termux-notification --id "$notificationId" -t "$title" -c "$data" --button1 call --button1-action "termux-telephony-call \"$phoneNumber\"" --button2 remove --button2-action "termux-notification-remove $notificationId" --ongoing
+                    termux-notification --id "$notificationId" -t "$title" -c "$data" --button1 call --button1-action "termux-telephony-call \"$phoneNumber\"" --button2 remove --button2-action "termux-notification-remove $notificationId"
                     termux-toast  -b white -c black -g bottom "$phoneNumber - $title"
 
                     checkNotification
