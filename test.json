@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "tag": "incall",
+    "key": "0|com.android.incallui|1|incall|10097",
+    "group": "",
+    "packageName": "com.android.incallui",
+    "title": "+919912345678",
+    "content": "+919912345678  India",
+    "when": "2021-10-26 07:12:36"
+  },
+  {
+    "id": 8,
+    "tag": "",
+    "key": "-1|android|8|null|1000",
+    "group": "",
+    "packageName": "android",
+    "title": "Choose input method",
+    "content": "Multilingual typing - Gboard",
+    "when": "1970-01-01 05:30:00"
+  },
+  {
+    "id": 20006,
+    "tag": "",
+    "key": "0|com.miui.securitycenter|20006|null|1000",
+    "group": "",
+    "packageName": "com.miui.securitycenter",
+    "title": "Security is running",
+    "content": "Tap for more information or to stop the app.",
+    "when": "2021-10-25 18:39:06"
+  },
+  {
+    "id": 1,
+    "tag": "",
+    "key": "0|com.miui.notification|1|null|1000",
+    "group": "",
+    "packageName": "com.miui.notification",
+    "title": "",
+    "content": "",
+    "when": "2021-10-26 01:48:10"
+  },
+  {
+    "id": 10,
+    "tag": "",
+    "key": "0|com.miui.mishare.connectivity|10|null|10098",
+    "group": "",
+    "packageName": "com.miui.mishare.connectivity",
+    "title": "Mi Share is running",
+    "content": "Tap for more information or to stop the app.",
+    "when": "2021-10-25 18:39:51"
+  },
+  {
+    "id": 1337,
+    "tag": "",
+    "key": "0|com.termux|1337|null|10230",
+    "group": "",
+    "packageName": "com.termux",
+    "title": "Termux",
+    "content": "2 sessions",
+    "when": "2021-10-26 06:46:25"
+  }
+]
