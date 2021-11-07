@@ -9,7 +9,7 @@ install: truecaller-on-termux
 		echo "\033[1;34mInstalling truecallerjs , please wait ...\033[0m"; \
 		npm install -g truecallerjs ; \
 	fi
-	@ if [ -f "$(PREFIX)/lib/node_modules/truecallerjs/.secret/authkey.json" ]; then \
+	@ if [ -f "$(HOME)/.truecallerjs/authkey.json" ]; then \
 		echo "\033[1;34mAlready logged in to your account, please wait ...\033[0m"; \
 	else \
 		echo "\033[1;34mPlease Login to your Truecaller account \033[0m"; \
