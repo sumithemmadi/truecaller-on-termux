@@ -3,7 +3,7 @@ export SVDIR := $(PREFIX)/var/service
 
 install: truecaller-on-termux
 	pkg i nodejs jq termux-api termux-services -y
-	npm install -g truecallerjs \
+	@ npm install -g truecallerjs 
 	@ if [ -f "$(HOME)/.truecallerjs/authkey.json" ]; then \
 		echo "\033[1;34mAlready logged in to your account, please wait ...\033[0m"; \
 	else \
