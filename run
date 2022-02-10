@@ -49,7 +49,7 @@ do
         for ((i=0;i<=jsonLength-1;i++));
         do
               packageName=`echo  $jsonData | jq -r .[$i].packageName`
-              if [[ $packageName == "com.android.incallui" ]]
+              if [[ $packageName == "com.android.incallui" || $packageName == "com.google.android.dialer" ]]
               then
                     title=`echo $jsonData | jq -r .[$i].title`
                     content=`echo $jsonData | jq -r .[$i].content`
