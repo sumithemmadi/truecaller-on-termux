@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1860351128,
+        "tag": "",
+        "key": "0|com.snapchat.android|1860351128|null|10351",
+        "group": "SNAP-351a72af-fb61-5169-a7af-7b3a6b0f3493",
+        "packageName": "com.snapchat.android",
+        "title": "Varun Sai Reddy",
+        "content": "sent you a Snap",
+        "when": "2023-02-22 10:23:27"
+    },
+    {
+        "id": -1866504883,
+        "tag": "",
+        "key": "0|com.snapchat.android|-1866504883|null|10351",
+        "group": "SNAP-376f3d5e-be82-59f0-8ab4-54b5c733e37b",
+        "packageName": "com.snapchat.android",
+        "title": "Uday kumar",
+        "content": "sent you a Snap",
+        "when": "2023-02-22 10:14:48"
+    },
+    {
+        "id": 1841617252,
+        "tag": "",
+        "key": "0|com.snapchat.android|1841617252|null|10351",
+        "group": "SNAP-1aa369d2-3dfe-5f81-a3dd-666c8ffdc0ee",
+        "packageName": "com.snapchat.android",
+        "title": "§íđđû Ýãđâv",
+        "content": "sent you a Snap",
+        "when": "2023-02-22 10:13:16"
+    },
+    {
+        "id": 2129984393,
+        "tag": "",
+        "key": "0|com.snapchat.android|2129984393|null|10351",
+        "group": "SNAP-e58213f0-d30b-5604-8ca0-4bbc059ef392",
+        "packageName": "com.snapchat.android",
+        "title": "Yogi",
+        "content": "sent you a Snap",
+        "when": "2023-02-22 08:48:27"
+    },
+    {
+        "id": 1520819950,
+        "tag": "",
+        "key": "0|com.snapchat.android|1520819950|null|10351",
+        "group": "mischief_snap~a00afa4d-89d7-4da9-93a8-2e0a6207f606",
+        "packageName": "com.snapchat.android",
+        "title": "Hasvika Reddy,Rohith Nayini,Saritha Dubbaka goud,Kadamanchiramesh Kadamanchiram,Ravi Kola95,Preethi Preethi",
+        "content": "New Snaps from Karthik and RaHaMaTh",
+        "when": "2023-02-22 08:46:33"
+    },
+    {
+        "id": 0,
+        "tag": "gig:-1553825328:^sq_ig_i_personal",
+        "key": "0|com.google.android.gm|0|gig:-1553825328:^sq_ig_i_personal|10289",
+        "group": "gig:-1553825328:^sq_ig_i_personal",
+        "packageName": "com.google.android.gm",
+        "title": "Arnab-Afk",
+        "content": "[sumithemmadi/truecaller-on-termux] Getting some problems (Issue #3)\nOk trying itYou are receiving this because you commented.Message ID: <sumithemmadi/truecaller-on-termux/issues/3/1439439549@github.com>",
+        "when": "2023-02-22 10:24:07"
+    },
+    {
+        "id": -2068477715,
+        "tag": "gig:-1553825328:^sq_ig_i_personal",
+        "key": "0|com.google.android.gm|-2068477715|gig:-1553825328:^sq_ig_i_personal|10289",
+        "group": "gig:-1553825328:^sq_ig_i_personal",
+        "packageName": "com.google.android.gm",
+        "title": "Arnab-Afk",
+        "content": "[sumithemmadi/truecaller-on-termux] Getting some problems (Issue #3)\nOk trying itYou are receiving this because you commented.Message ID: <sumithemmadi/truecaller-on-termux/issues/3/1439439549@github.com>",
+        "when": "2023-02-22 10:24:07"
+    },
+    {
+        "id": -1132074423,
+        "tag": "",
+        "key": "0|com.snapchat.android|-1132074423|null|10351",
+        "group": "stories~b662e995-9aef-451d-816b-bcb54abf2a59",
+        "packageName": "com.snapchat.android",
+        "title": "Snapchat",
+        "content": "New Story from Kishore Limgave ",
+        "when": "2023-02-22 00:33:12"
+    },
+    {
+        "id": 1337,
+        "tag": "",
+        "key": "0|com.termux|1337|null|10352",
+        "group": "",
+        "packageName": "com.termux",
+        "title": "Termux",
+        "content": "1 session",
+        "when": "2023-02-22 10:23:32"
+    },
+    {
+        "id": 0,
+        "tag": "-1705526044::SUMMARY::wx",
+        "key": "0|com.google.android.googlequicksearchbox|0|-1705526044::SUMMARY::wx|10269",
+        "group": "-1705526044::SUMMARY::wx",
+        "packageName": "com.google.android.googlequicksearchbox",
+        "title": "",
+        "content": "",
+        "when": "2023-02-22 10:19:35"
+    },
+    {
+        "id": 0,
+        "tag": "-1705526044::a:snotification:[0x394,wx.f,NOTIFICATION]",
+        "key": "0|com.google.android.googlequicksearchbox|0|-1705526044::a:snotification:[0x394,wx.f,NOTIFICATION]|10269",
+        "group": "-1705526044::SUMMARY::wx",
+        "packageName": "com.google.android.googlequicksearchbox",
+        "title": "27° in Kamrej",
+        "content": "Haze · See more",
+        "when": "2023-02-22 10:19:35"
+    }
+]
